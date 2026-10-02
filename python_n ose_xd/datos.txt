@@ -1,0 +1,20 @@
+oracle
+SELECT t.table_name,
+       c.column_name,
+       c.data_type,
+       identity_column,
+    	   identity_generation,
+       nullable
+FROM user_tables t
+JOIN user_tab_columns c
+  ON t.table_name = c.table_name
+ORDER BY t.table_name, c.column_id;
+
+server 
+SELECT t.name AS NombreTabla,
+       c.name AS NombreColumna,
+       ty.name AS TipoDato
+FROM sys.tables t
+JOIN sys.columns c ON t.object_id = c.object_id
+JOIN sys.types ty ON c.user_type_id = ty.user_type_id
+ORDER BY t.name, c.column_id;
